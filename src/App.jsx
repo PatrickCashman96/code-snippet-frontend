@@ -5,6 +5,9 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
+import IsAnon from './components/IsAnon';
+import IsPrivate from './components/IsPrivate';
+
 
 
 function App() {
@@ -22,12 +25,12 @@ function App() {
 
         <Route 
           path='/signup'
-          element={<SignupPage/>}
+          element={<IsAnon><SignupPage/></IsAnon>}
         />
         
         <Route 
           path='/login'
-          element={<LoginPage/>}
+          element={<IsAnon><LoginPage/></IsAnon>}
         />
         
       </Routes>
