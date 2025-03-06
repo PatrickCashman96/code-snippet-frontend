@@ -17,6 +17,10 @@ function Navbar(){
         <button>Login</button>
       </Link>
 
+      <Link to="/snippets">
+        <button>Snippets</button>
+      </Link>
+
     </nav>
   )
 }
