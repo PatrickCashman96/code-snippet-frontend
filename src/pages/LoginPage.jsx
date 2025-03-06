@@ -5,16 +5,33 @@ import { Link, useNavigate } from "react-router-dom";
 function LoginPage(props){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMeassage, setErrorMessage] = useState(undefined);
+
+  const { storeToken, authenticateUser} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleEmail = (e)=> setEmail(e.target.value);
   const handlePassword = (e)=> setPassword(e.target.value);
 
-  const handleLoginSubmit = (e)=>{
+  const handleLoginSubmit = async (e)=>{
     e.preventDefault();
 
     const requestBody  = {email, password, name};
     
-    console.log(requestBody);
+    try{
+      // const response = await axios.post(`${API_URL}/auth/login`, requestBody);
+      const response = await authService.login(requestBody);
+      console.log("JWT token:", response.data.authToken);
+      
+      storeToken(response.data.authToken);
+      
+      authenticateUser();
+      
+      navigate("/")
+    }catch(error){
+      const errorDescriptioin = error.response.data.message;
+      setErrorMessage(errorDescriptioin); 
+    }
     
   };
 
