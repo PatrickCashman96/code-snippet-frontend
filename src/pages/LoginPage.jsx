@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
+import authService from "../services/auth.service";
 
 
 function LoginPage(props){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMeassage, setErrorMessage] = useState(undefined);
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
   const { storeToken, authenticateUser} = useContext(AuthContext);
   const navigate = useNavigate();
@@ -16,10 +18,9 @@ function LoginPage(props){
   const handleLoginSubmit = async (e)=>{
     e.preventDefault();
 
-    const requestBody  = {email, password, name};
+    const requestBody  = {email, password};
     
     try{
-      // const response = await axios.post(`${API_URL}/auth/login`, requestBody);
       const response = await authService.login(requestBody);
       console.log("JWT token:", response.data.authToken);
       
@@ -29,6 +30,7 @@ function LoginPage(props){
       
       navigate("/")
     }catch(error){
+      console.log("login error",error)
       const errorDescriptioin = error.response.data.message;
       setErrorMessage(errorDescriptioin); 
     }
@@ -41,13 +43,15 @@ function LoginPage(props){
 
       <form onSubmit={handleLoginSubmit}>
         <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail}/>
+        <input type="email" name="email" value={email} onChange={handleEmail} required={true}/>
         
         <label>password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword}/>
+        <input type="password" name="password" value={password} onChange={handlePassword} required={true}/>
         
-        <button>Sign Up</button>
+        <button>Login</button>
       </form>
+
+      {errorMessage && <p className="error-Message">{errorMessage}</p>}
 
       <p>Don't have an account?</p>
       <Link to="/signup"> Signup</Link>

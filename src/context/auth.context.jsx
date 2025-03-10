@@ -27,9 +27,9 @@ function AuthProviderWrapper(props){
 
       }catch(error){
         setIsLoggedIn(false);
-        setIsLoading(true);
+        setIsLoading(false);
         setUser(null);
-        console.log("invalid token")
+        console.log("invalid token", error)
       }
     }else{
         setIsLoggedIn(false);

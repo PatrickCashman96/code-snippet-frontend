@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 
-function ShowSnippet ({title, snippet, description, likes, user, _id}){
+function ShowSnippet ({title, code, language, tags,  _id}){
   return(
-    <div className="Snippets list">
+    <div className="SignupPage">
       <h2>{title}</h2>
-      <h3>From: {user}</h3>
-      <p>{snippet}</p>
-      <p>{description}</p>
-      <p>Likes: {likes}</p>
+      <p>{code}</p>
+      <p>Language: {language}</p>
+      <p>tags: {tags}</p>
     </div>
   )
 }
