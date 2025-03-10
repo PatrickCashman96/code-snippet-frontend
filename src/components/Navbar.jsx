@@ -13,8 +13,11 @@ function Navbar(){
 
       {isLoggedIn && (
         <>
-          <Link to="/snippet">
+          <Link to="/snippets">
             <button>Snippets</button>
+          </Link>
+          <Link to="/favorites">
+            <button>Favorites</button>
           </Link>
           <button onClick={logOutUser}>Logout</button>
           <span>{user && user.name}</span>

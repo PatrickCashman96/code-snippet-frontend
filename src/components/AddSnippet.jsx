@@ -1,5 +1,6 @@
 import { useState } from "react";
 import snippetService from "../services/snippet.service";
+import { useNavigate } from "react-router-dom";
 
 function AddSnippet(props){
   const [form, setForm] = useState({
@@ -8,6 +9,9 @@ function AddSnippet(props){
     language:"",
     tags:"",
   });
+
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
   
   const handleChange  = (e) =>{
     const{name,value} = e.target;
@@ -29,13 +33,13 @@ function AddSnippet(props){
       props.refreshSnippets();
       setForm({ title: "", code: "", language: "", tags: "" });
     } catch (error) {
-      console.log(error.response?.data.error || error);
+      setError(error.response?.data.error || "Failed to add snippet");
     }
   };
 
 
   return (
-    <div className="SignupPage">
+    <div className="AddSnippet">
       <h3>Add Snippet</h3>
 
       <form onSubmit={handleSubmit}>
@@ -77,9 +81,11 @@ function AddSnippet(props){
           name="tags"
           value={form.tags}
           onChange={handleChange}
+          placeholder= "ML, AI, Frontend, Backend, BI.."
         />
 
         <button type="submit">Add Snippet</button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
     </div>
   );
