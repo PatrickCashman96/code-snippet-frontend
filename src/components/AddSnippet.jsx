@@ -21,7 +21,7 @@ function AddSnippet(props){
       title: form.title,
       code: form.code,
       language: form.language,
-      tags: form.tags
+      tags: form.tags ? form.tags.split(",").map((tag) => tag.trim()) : [], // Convert to array
     };
     
     try {
