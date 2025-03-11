@@ -24,7 +24,6 @@ function SnippetPage(){
   return(
     <div className="Snippet">
       Snippet
-      <AddSnippet refreshSnippets={getAllSnippets} />
       {snippets.map(snippet =>(
         <ShowSnippet key={snippet._id} {...snippet}/>
       ))}

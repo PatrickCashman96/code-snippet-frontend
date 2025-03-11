@@ -19,6 +19,9 @@ function Navbar(){
           <Link to="/favorites">
             <button>Favorites</button>
           </Link>
+          <Link to="/my-snippets">
+            <button>My Snippets</button>
+          </Link>
           <button onClick={logOutUser}>Logout</button>
           <span>{user && user.name}</span>
         </>
