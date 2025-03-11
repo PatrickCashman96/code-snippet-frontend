@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import favoriteService from "../services/favorite.service";
+import { AuthContext } from "../context/auth.context";
 
-function ShowSnippet ({title, code, language, tags,  _id}){
+function ShowSnippet ({title, code, language, tags,  _id, createdBy}){
   const [isFavorited, setIsFavorited] = useState(false);
   const [favoriteId, setFavoriteId] = useState(null);
   const [error, setError] = useState("");
-
+  const {user} = useContext(AuthContext);
+  
   useEffect(() => {
     const checkFavorite = async () => {
       try {
@@ -42,7 +44,7 @@ function ShowSnippet ({title, code, language, tags,  _id}){
   };
 
   return (
-    <div className="SnippetCard">
+    <div className="LoginPage">
       <h2>{title}</h2>
       <pre>{code}</pre>
       <p>Language: {language}</p>
@@ -52,6 +54,17 @@ function ShowSnippet ({title, code, language, tags,  _id}){
         {isFavorited ? "Unfavorite" : "Favorite"}
       </button>
       {error && <p style={{ color: "red" }}>{error}</p>}
+
+      {user._id === createdBy._id && (
+        <div>
+          <Link to={`/snippets/edit/${_id}`}>Edit</Link>
+          <button>Delete</button>
+        </div>
+      )}
+
     </div>
   );
 }
+
+
+export default ShowSnippet;

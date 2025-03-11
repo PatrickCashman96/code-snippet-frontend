@@ -9,7 +9,8 @@ import IsAnon from './components/IsAnon';
 import IsPrivate from './components/IsPrivate';
 import SnippetPage from './pages/SnippetPage';
 import { AuthProviderWrapper } from "./context/auth.context";
-
+import FavoritesPage from './pages/FavoritesPage';
+import SnippetDetailPage from './pages/SnippetDetailPage';
 
 function App() {
 
@@ -37,11 +38,21 @@ function App() {
 
           <Route
             path='/snippets'
-            element={<IsPrivate><SnippetPage /></IsPrivate>}
+            element={<IsPrivate><SnippetPage/></IsPrivate>}
           />
 
           <Route
-            path="favorites"
+            path='/snippets/:id'
+            element={<IsPrivate><SnippetDetailPage/></IsPrivate>}
+          />
+          
+          <Route
+            path='/snippets/edit/:id'
+            element={<IsPrivate><SnippetDetailPage/></IsPrivate>}
+          />
+
+          <Route
+            path="/favorites"
             element={<IsPrivate><FavoritesPage /></IsPrivate>}
           />
         </Routes>
