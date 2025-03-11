@@ -12,6 +12,8 @@ import { AuthProviderWrapper } from "./context/auth.context";
 import FavoritesPage from './pages/FavoritesPage';
 import SnippetDetailPage from './pages/SnippetDetailPage';
 import MySnippetsPage from './pages/MySnippetsPage';
+import EditSnippetPage from './pages/EditSnippetPage';
+
 function App() {
 
   return (
@@ -53,7 +55,7 @@ function App() {
           
           <Route
             path='/snippets/edit/:id'
-            element={<IsPrivate><SnippetDetailPage/></IsPrivate>}
+            element={<IsPrivate><EditSnippetPage/></IsPrivate>}
           />
 
           <Route
