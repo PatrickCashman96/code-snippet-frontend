@@ -19,15 +19,15 @@ class AuthService{
   };
 
   login = requestBody =>{
-    return this.api.post("auth/login", requestBody);
+    return this.api.post("/auth/login", requestBody);
   };
 
   signup = requestBody =>{
-    return this.api.post("auth/signup", requestBody);
+    return this.api.post("/auth/signup", requestBody);
   };
 
   verify = ()=>{
-    return this.api.get("auth/verify");
+    return this.api.get("/auth/verify");
   }
 }
 
