@@ -27,7 +27,7 @@ function MySnippetsPage(){
       <AddSnippet refreshSnippets = {getAllSnippets}/>
       {snippets.map(snippet => {
         if(user._id === snippet.createdBy._id){
-          return <ShowSnippet key={snippet._id} {...snippet}/>
+          return <ShowSnippet key={snippet._id} {...snippet} refreshSnippets={getAllSnippets}/>
         }  
       })}
     </div>

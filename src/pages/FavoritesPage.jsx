@@ -26,7 +26,7 @@ function FavoritesPage() {
           <p>No favorite snippets yet.</p>
         ) : (
           favorites.map((favorite) => (
-            <ShowSnippet key={favorite._id} {...favorite.snippet} />
+            <ShowSnippet key={favorite._id} {...favorite.snippet} refreshSnippets={getFavorites}/>
           ))
         )}
       </div>

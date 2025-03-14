@@ -2,9 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import favoriteService from "../services/favorite.service";
 import { AuthContext } from "../context/auth.context";
-import "./ShowSnippet.css"
+import snippetService from "../services/snippet.service";
 
-function ShowSnippet ({title, code, language, tags,  _id, createdBy}){
+function ShowSnippet ({title, code, language, tags,  _id, createdBy, refreshSnippets}){
   const [isFavorited, setIsFavorited] = useState(false);
   const [favoriteId, setFavoriteId] = useState(null);
   const [error, setError] = useState("");
@@ -44,6 +44,16 @@ function ShowSnippet ({title, code, language, tags,  _id, createdBy}){
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      await snippetService.deleteSnippet(_id);
+      refreshSnippets()
+    } catch (error) {
+      setError(error.response?.data?.error || "Deletion failed");
+    }
+  };
+
+
   return (
     <div className="card">
       <h2>{title}</h2>
@@ -54,14 +64,16 @@ function ShowSnippet ({title, code, language, tags,  _id, createdBy}){
       <button onClick={handleFavoriteToggle}>
         {isFavorited ? "Unfavorite" : "Favorite"}
       </button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      
 
       {user._id === createdBy._id && (
         <div>
           <Link to={`/snippets/edit/${_id}`}>Edit</Link>
-          <button>Delete</button>
+          <button onClick={handleDelete}>Delete</button>
         </div>
       )}
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
     </div>
   );
