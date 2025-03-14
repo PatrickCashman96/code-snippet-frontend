@@ -8,7 +8,8 @@ function FavoritesPage() {
   const getFavorites = async () => {
     try {
       const response = await favoriteService.getFavorites();
-      setFavorites(response.data);
+      const validFavorites = response.data.filter(fav => fav.snippet);
+      setFavorites(validFavorites);
     } catch (error) {
       console.error(error.response?.data);
     }
