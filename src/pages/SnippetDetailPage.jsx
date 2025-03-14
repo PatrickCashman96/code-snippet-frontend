@@ -60,9 +60,9 @@ function SnippetDetailPage(){
   if (!snippet) return <p>Loading...</p>;
 
   return (
-    <div>
+    <div className="card">
       <h2>title: {snippet.title}</h2>
-      <pre>Snippet: {snippet.code}</pre>
+      <pre className="Snippets">{snippet.code}</pre>
       <p><strong>Language:</strong> {snippet.language}</p>
       <p><strong>Created By:</strong> {snippet.createdBy.name}</p>
       <p><strong>Created At:</strong> {new Date(snippet.createdAt).toLocaleString()}</p>

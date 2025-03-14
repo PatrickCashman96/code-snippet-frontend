@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import snippetService from "../services/snippet.service";
 import ShowSnippet from "../components/ShowSnippet";
-import AddSnippet from "../components/AddSnippet";
 
 function SnippetPage(){
   const [snippets, setSnippets] = useState([]);
@@ -23,7 +22,7 @@ function SnippetPage(){
   console.log(snippets)
   return(
     <div className="Snippet">
-      Snippet
+      <h1>Snippets</h1>
       {snippets.map(snippet =>(
         <ShowSnippet key={snippet._id} {...snippet}/>
       ))}

@@ -21,13 +21,16 @@ function FavoritesPage() {
   return (
     <div className="FavoritesPage">
       <h1>Favorite Snippets</h1>
-      {favorites.length === 0 ? (
-        <p>No favorite snippets yet.</p>
-      ) : (
-        favorites.map((favorite) => (
-          <ShowSnippet key={favorite._id} {...favorite.snippet} />
-        ))
-      )}
+      <div>
+        {favorites.length === 0 ? (
+          <p>No favorite snippets yet.</p>
+        ) : (
+          favorites.map((favorite) => (
+            <ShowSnippet key={favorite._id} {...favorite.snippet} />
+          ))
+        )}
+      </div>
+      
     </div>
   );
 }

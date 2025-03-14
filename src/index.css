@@ -14,97 +14,113 @@
 
 body {
   margin: 0;
-  background-color: #1C1F26; /* Deep Navy Blue */
-  color: #ECECEC; /* White Smoke */
-  font-family: 'Poppins', sans-serif;
-}
-
-h1 {
-  font-size: 3rem;
-  text-align: center;
-  font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  padding: 0;
+  background-color: #000; /* Matrix Black */
+  color: #00FF41; /* Matrix Green */
+  font-family: 'Courier New', monospace;
 }
 
 a {
-  list-style: none;
-  color: black;
+  color: #00FF41;
+  text-decoration: none;
+}
+
+a:hover {
+  text-shadow: 0 0 5px #00FF41, 0 0 10px #00FF41;
 }
 
 button, select {
-  background-color: #6258e9; /* Steel Gray */
-  color: #ECECEC; /* White Smoke */
-  border: none;
+  background-color: transparent;
+  color: #00FF41;
+  border: 1px solid #00FF41;
+  padding: 6px 12px;
   margin: 5px;
-  padding: 5px 10px;
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 6px;
-  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 5px #00FF41;
+  transition: all 0.3s ease;
 }
-button:hover {
-  background-color: #61a8e2; /* Fiery Red */
-  color: white;
+
+button:hover, select:hover {
+  background-color: #00FF41;
+  color: #000;
+  box-shadow: 0 0 10px #00FF41;
+}
+
+
+input, textarea {
+  background-color: #0a0f0a;
+  color: #00FF41;
+  border: 1px solid #00FF41;
+  padding: 8px;
+  margin: 10px;
+  width: 200px;
+}
+
+
+input:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px #00FF41;
 }
 
 label {
-  width: 200px;
+  color: #00FF41;
   display: block;
+  margin-bottom: 5px;
 }
 
-input,
-textarea {
-  width: 200px;
-  padding: 10px;
-  display: inline-block;
-  margin: 10px;
+h1, h2, h3 {
+  text-shadow: 0 0 5px #00FF41;
+  color: #00FF41;
+}
+
+label {
+  color: #00FF41;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .card {
-  width: 400px;
-  padding: 10px;
-  box-shadow: 0px 2px 3px grey;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  background: #94a7c8;
-  border-radius: 4px;
+  background-color: rgba(17, 43, 23, 0.603);
+  border: 1px solid #00FF41;
+  color: #00FF41;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #00FF41;
+  margin: 15px auto;
+  width: 50%;
 }
 
-.ProjectCard h3::after {
-  content: url("https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/icon-expand.png");
-  margin-left: 5px;
+.Page{
+  display: flex;
+  flex-direction: column;
 }
 
-.EditProjectPage,
-.AddProject,
-.AddTask,
+.EditSnippet,
+.AddSnippet,
 .SignupPage,
 .LoginPage {
-  background: #f9eec3;
-  border: 1px solid grey;
-  box-shadow: 0px 2px 3px grey;
-  width: 400px;
+  
   text-align: center;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  padding: 10px;
-  border-radius: 4px;
+  color: #00FF41;
+  text-shadow: 0 0 5px #00FF41, 0 0 10px #00FF41;
+  z-index: 2;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+
 }
 
-.EditProjectPage {
-  background-color: rgb(239, 196, 88);
+.errorMessage {
+  color: #ff4444; /* Neon Red */
+  padding: 8px 12px;
+  margin: 10px auto;
+  text-shadow: 0 0 5px #ff4444;
+  font-size: 0.95rem;
+  text-align: center;
+  max-width: 400px;
 }
 
-.SignupPage,
-.LoginPage {
-  background-color: #92c290be;
-}
-
-
-.EditProjectPage form,
-.AddTask form,
-.AddProject form,
 .SignupPage form,
 .LoginPage form {
   display: flex;
@@ -112,13 +128,9 @@ textarea {
   align-items: center;
 }
 
-.AddTask button,
-.AddProject button {
-  display: block;
+.list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
 }
-
-.TaskCard {
-  background-color: #dfeef9;
-}
-
-

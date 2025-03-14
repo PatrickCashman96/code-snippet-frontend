@@ -40,6 +40,7 @@ function AddSnippet(props){
 
   return (
     <div className="LoginPage">
+      <h1>My Snippets</h1>
       <h3>Add Snippet</h3>
 
       <form onSubmit={handleSubmit}>

@@ -23,8 +23,7 @@ function MySnippetsPage(){
   console.log(snippets);
 
   return(
-    <div>
-      <h1>MY SNIPPETS</h1>
+    <div className="Page">
       <AddSnippet refreshSnippets = {getAllSnippets}/>
       {snippets.map(snippet => {
         if(user._id === snippet.createdBy._id){

@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import authService from "../services/auth.service";
-
+import SnippetPage from "./SnippetPage";
 
 function LoginPage(props){
   const [email, setEmail] = useState("");
@@ -21,14 +21,10 @@ function LoginPage(props){
     const requestBody  = {email, password};
     
     try{
-      const response = await authService.login(requestBody);
-      console.log("JWT token:", response.data.authToken);
-      
-      storeToken(response.data.authToken);
-      
-      authenticateUser();
-      
-      navigate("/")
+      const response = await authService.login(requestBody);      
+      storeToken(response.data.authToken);      
+      await authenticateUser();      
+      navigate("/snippets")
     }catch(error){
       console.log("login error",error)
       const errorDescriptioin = error.response.data.message;
@@ -51,7 +47,7 @@ function LoginPage(props){
         <button>Login</button>
       </form>
 
-      {errorMessage && <p className="error-Message">{errorMessage}</p>}
+      {errorMessage && <p className="errorMessage">{errorMessage}</p>}
 
       <p>Don't have an account?</p>
       <Link to="/signup"> Signup</Link>

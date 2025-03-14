@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import favoriteService from "../services/favorite.service";
 import { AuthContext } from "../context/auth.context";
+import "./ShowSnippet.css"
 
 function ShowSnippet ({title, code, language, tags,  _id, createdBy}){
   const [isFavorited, setIsFavorited] = useState(false);
@@ -44,9 +45,9 @@ function ShowSnippet ({title, code, language, tags,  _id, createdBy}){
   };
 
   return (
-    <div className="LoginPage">
+    <div className="card">
       <h2>{title}</h2>
-      <pre>{code}</pre>
+      <pre className="Snippets">{code}</pre>
       <p>Language: {language}</p>
       <p>Tags: {tags ? tags.join(", ") : "None"}</p>
       <Link to={`/snippets/${_id}`}>View Details</Link>

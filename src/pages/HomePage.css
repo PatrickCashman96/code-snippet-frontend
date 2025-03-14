@@ -1,0 +1,45 @@
+.matrix-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #00FF41;
+  text-shadow: 0 0 5px #00FF41, 0 0 10px #00FF41;
+  z-index: 2;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+}
+
+
+
+.matrix-title {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.matrix-text {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.matrix-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 1rem;
+  color: #00FF41;
+  text-decoration: none;
+  border: 1px solid #00FF41;
+  border-radius: 8px;
+  box-shadow: 0 0 8px #00FF41;
+  transition: all 0.3s ease;
+}
+
+.matrix-btn:hover {
+  background-color: #00FF41;
+  color: #000;
+  box-shadow: 0 0 15px #00FF41;
+}
+
+
