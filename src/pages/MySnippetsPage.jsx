@@ -7,6 +7,7 @@ import { AuthContext } from "../context/auth.context";
 function MySnippetsPage(){
   const [snippets, setSnippets] = useState([]);
   const {user} = useContext(AuthContext)
+  
   const getAllSnippets = async() =>{
     try{
       const response = await snippetService.getAllSnippets();

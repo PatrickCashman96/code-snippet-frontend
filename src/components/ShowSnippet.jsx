@@ -66,7 +66,7 @@ function ShowSnippet ({title, code, language, tags,  _id, createdBy, refreshSnip
       </button>
       
 
-      {user._id === createdBy._id && (
+      {createdBy && user._id === createdBy._id && (
         <div>
           <Link to={`/snippets/edit/${_id}`}>Edit</Link>
           <button onClick={handleDelete}>Delete</button>
