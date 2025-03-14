@@ -25,7 +25,7 @@ function SignupPage(props){
       const response = await authService.signup(requestBody);
       navigate('/login')
     } catch (error) {
-      const errorDescription = error.response.data.message;
+      const errorDescription = error.response?.data?.message;
       setErrorMessage(errorDescription)
     }
 
